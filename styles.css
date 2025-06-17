@@ -1,0 +1,177 @@
+/* Toàn bộ nội dung file styles.css đã được cập nhật */
+
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    background-color: #f0f2f5; 
+    color: #333;
+    padding-bottom: 120px;
+}
+
+header { 
+    background-color: #007bff; 
+    color: white; 
+    padding: 1rem 2rem; 
+    text-align: center; 
+}
+
+header p {
+    font-size: 0.7rem;
+    font-style: bold; 
+    opacity: 0.9;
+    margin-top: 6px;
+    color: green;
+}
+
+main { 
+    padding: 2rem; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.controls { 
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
+    margin-bottom: 1.5rem; 
+}
+
+.custom-file-upload { 
+    display: inline-block;
+    padding: 12px 20px; 
+    cursor: pointer; 
+    background-color: #007bff; 
+    color: white; 
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s; 
+}
+
+.custom-file-upload:hover { 
+    background-color: #0056b3; 
+}
+
+#floating-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    background: rgba(40, 40, 25, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.control-btn {
+    padding: 10px 24px;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.1s;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.control-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+.control-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+#play-btn, #pause-btn { 
+    background-color: #28a745;
+}
+
+#play-btn:hover:not(:disabled), #pause-btn:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+#stop-btn {
+    background-color: #dc3545;
+}
+
+#stop-btn:hover:not(:disabled) {
+    background-color: #c82333;
+}
+
+.control-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+#osmd-container { 
+    width: 95%; 
+    max-width: 1200px; 
+    background-color: white; 
+    border: 1px solid #ccc; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    overflow: auto; 
+    min-height: 70vh; 
+    position: relative;
+}
+
+#loading-indicator { 
+    padding: 1rem; 
+    font-size: 1.1rem; 
+    color: #007bff; 
+}
+
+/* Ẩn con trỏ mặc định của OSMD */
+div.osmd-cursor { 
+    display: none !important; 
+}
+
+/* Style cho con trỏ tùy chỉnh */
+#custom-cursor {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #FFD700; /* Màu vàng gold */
+    border-radius: 50%; /* Hình tròn */
+    box-shadow: 0 0 10px 3px #FFFF00, 0 0 20px 6px #FFFF00; /* Ánh sáng vàng */
+    animation: gold-glow 1.5s ease-in-out infinite; /* Nhấp nháy */
+    pointer-events: none;
+    z-index: 1001;
+}
+
+/* Hiệu ứng nhấp nháy ánh sáng vàng */
+@keyframes gold-glow {
+    0%, 100% { 
+        box-shadow: 0 0 10px 3px #FFFF00, 0 0 20px 6px #FFFF00; 
+        opacity: 0.8;
+    }
+    50% { 
+        box-shadow: 0 0 15px 5px #FFFF00, 0 0 30px 10px #FFFF00; 
+        opacity: 1;
+    }
+}
+
+/* Hiệu ứng nhảy vòng cung */
+#custom-cursor.jumping {
+    animation: jump-arc 0.5s ease-in-out;
+}
+
+@keyframes jump-arc {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-40px); } /* Nhảy lên 40px */
+    100% { transform: translateY(0); } /* Hạ xuống */
+}
+
+html {
+    scroll-behavior: smooth;
+}
