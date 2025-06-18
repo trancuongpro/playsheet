@@ -19,14 +19,25 @@
         </div>
 
         <div id="floating-controls">
+            <button id="transpose-down-btn" class="control-btn" disabled>-</button>
+            <div id="transpose-value">0</div>
+            <button id="transpose-up-btn" class="control-btn" disabled>+</button>
+            
             <button id="stop-btn" class="control-btn" disabled>Stop</button>
             <button id="play-btn" class="control-btn" disabled>Play</button>
             <button id="pause-btn" class="control-btn" disabled>Pause</button>
+            
+            <!-- MỚI: Nút xuất PDF -->
+            <button id="export-pdf-btn" class="control-btn" disabled>Xuất PDF</button>
         </div>
         
         <div id="loading-indicator" style="display: none;">Đang Tải Và Xử Lý Sheet...</div>
         <div id="osmd-container"></div>
     </main>
+
+    <!-- MỚI: Thêm thư viện jsPDF và svg2pdf -->
+    <script src="jspdf.umd.min.js" defer></script>
+    <script src="svg2pdf.umd.min.js" defer></script>
 
     <script src="opensheetmusicdisplay.min.js" defer></script>
     <script src="osmd-audio-player.min.js" defer></script>

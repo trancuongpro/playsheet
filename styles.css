@@ -5,7 +5,7 @@ body {
     margin: 0; 
     background-color: #f0f2f5; 
     color: #333;
-    padding-bottom: 120px;
+    padding-bottom: 120px; /* Tạo khoảng trống cho floating controls */
 }
 
 header { 
@@ -24,7 +24,7 @@ header p {
 }
 
 main { 
-    padding: 2rem; 
+    padding: 1rem; /* Giảm padding trên di động */
     display: flex; 
     flex-direction: column; 
     align-items: center; 
@@ -57,12 +57,12 @@ main {
 
 #floating-controls {
     position: fixed;
-    bottom: 20px;
+    bottom: 15px; /* Giảm khoảng cách với đáy màn hình */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
-    padding: 12px 20px;
+    gap: 8px; /* Giảm khoảng cách giữa các nút */
+    padding: 10px 15px; /* Giảm padding */
     border-radius: 50px;
     background: rgba(40, 40, 25, 0.85);
     backdrop-filter: blur(12px);
@@ -70,17 +70,20 @@ main {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    align-items: center;
+    max-width: 95%; /* Đảm bảo không tràn ra ngoài */
+    box-sizing: border-box;
 }
 
 .control-btn {
-    padding: 10px 24px;
+    padding: 10px 20px; /* Giảm padding ngang */
     border-radius: 30px;
     border: none;
     color: white;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.2s, transform 0.1s;
-    font-size: 16px;
+    font-size: 15px; /* Giảm cỡ chữ một chút */
     flex-shrink: 0;
 }
 
@@ -107,6 +110,24 @@ main {
     background-color: #c82333;
 }
 
+#transpose-up-btn, #transpose-down-btn {
+    background-color: #495057;
+    padding: 10px 18px; /* Giảm padding ngang thêm */
+}
+
+#transpose-up-btn:hover:not(:disabled), #transpose-down-btn:hover:not(:disabled) {
+    background-color: #343a40;
+}
+
+#transpose-value {
+    color: #ffc107; 
+    font-size: 16px; /* Giảm cỡ chữ */
+    font-weight: bold;
+    padding: 0 8px; /* Giảm padding */
+    min-width: 35px; 
+    text-align: center;
+}
+
 .control-btn:disabled {
     background-color: #6c757d;
     cursor: not-allowed;
@@ -115,7 +136,7 @@ main {
 }
 
 #osmd-container { 
-    width: 95%; 
+    width: 100%; /* Sử dụng toàn bộ chiều rộng trên di động */
     max-width: 1200px; 
     background-color: white; 
     border: 1px solid #ccc; 
@@ -141,10 +162,10 @@ div.osmd-cursor {
     position: absolute;
     width: 12px;
     height: 12px;
-    background-color: #FFD700; /* Màu vàng gold */
-    border-radius: 50%; /* Hình tròn */
-    box-shadow: 0 0 10px 3px #FFFF00, 0 0 20px 6px #FFFF00; /* Ánh sáng vàng */
-    animation: gold-glow 1.5s ease-in-out infinite; /* Nhấp nháy */
+    background-color: #FFD700; 
+    border-radius: 50%; 
+    box-shadow: 0 0 10px 3px #FFFF00, 0 0 20px 6px #FFFF00;
+    animation: gold-glow 1.5s ease-in-out infinite;
     pointer-events: none;
     z-index: 1001;
 }
@@ -168,10 +189,55 @@ div.osmd-cursor {
 
 @keyframes jump-arc {
     0% { transform: translateY(0); }
-    50% { transform: translateY(-40px); } /* Nhảy lên 40px */
-    100% { transform: translateY(0); } /* Hạ xuống */
+    50% { transform: translateY(-40px); }
+    100% { transform: translateY(0); }
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+/* ---- MỚI: Media Query cho thiết bị di động ---- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    main {
+        padding: 1rem;
+    }
+    .custom-file-upload {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+    #floating-controls {
+        flex-wrap: wrap; /* Cho phép các nút xuống hàng */
+        justify-content: center; /* Căn giữa các nút trên hàng mới */
+        width: 90%; /* Giới hạn chiều rộng trên di động */
+        padding: 8px;
+        bottom: 10px;
+        border-radius: 25px; /* Giảm bo tròn một chút */
+    }
+    .control-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    #transpose-up-btn, #transpose-down-btn {
+        padding: 8px 14px;
+    }
+    #transpose-value {
+        font-size: 16px;
+        min-width: 30px;
+        padding: 0 5px;
+    }
+    body {
+        padding-bottom: 150px; /* Tăng padding bottom để có không gian cho 2 hàng nút */
+    }
+}
+
+#export-pdf-btn {
+    background-color: #ff9800; /* Màu cam */
+}
+
+#export-pdf-btn:hover:not(:disabled) {
+    background-color: #f57c00;
 }
